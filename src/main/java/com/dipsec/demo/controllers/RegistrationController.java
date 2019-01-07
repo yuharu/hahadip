@@ -5,17 +5,15 @@ import com.dipsec.demo.repositories.UserRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.annotation.SessionScope;
 
 import javax.inject.Named;
 
-@Named(value = "fhdReportController")
+@Named(value = "registrationController")
 @SessionScope
 @Getter
 @Setter
-public class UserController {
+public class RegistrationController {
     @Autowired
     private UserRepository userRepository;
 
