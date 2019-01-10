@@ -8,9 +8,17 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
+    <title>Регистрация в системе</title>
+    <style type="text/css">
+    </style>
 </h:head>
 <h:body>
     <h:form>
+        <h2>Hello World!</h2>
+        <h:inputText value="#{registrationController.name}" />
+        <p:panel title="Регистрация" collapsible="false">
+            <h:outputText value="Panel Content" />
+        </p:panel>
     </h:form>
 </h:body>
 </html>

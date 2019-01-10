@@ -17,6 +17,7 @@ import java.util.UUID;
 public class RegistrationController {
     @Autowired
     private UserRepository userRepository;
+    private String name = "123";
 
     public UserInfo getUserInfoById(UUID id){
         return userRepository.getOne(id.toString());
