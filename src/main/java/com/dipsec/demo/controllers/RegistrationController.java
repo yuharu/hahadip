@@ -1,7 +1,7 @@
 package com.dipsec.demo.controllers;
 
 import com.dipsec.demo.model.entities.UserInfo;
-import com.dipsec.demo.repositories.UserRepository;
+import com.dipsec.demo.repositories.UserInfoRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,10 @@ import java.util.UUID;
 @Setter
 public class RegistrationController {
     @Autowired
-    private UserRepository userRepository;
+    private UserInfoRepository userInfoRepository;
     private String name = "123";
 
     public UserInfo getUserInfoById(UUID id){
-        return userRepository.getOne(id.toString());
+        return userInfoRepository.getOne(id);
     }
 }
