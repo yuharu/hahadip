@@ -14,8 +14,6 @@ public class UserCredential implements Serializable {
     private String username;
     @Column
     private String password;
-    @Column
-    private String salt;
 
     @OneToOne(mappedBy = "userCredential", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
