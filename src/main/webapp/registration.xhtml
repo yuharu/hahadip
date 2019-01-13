@@ -8,17 +8,62 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
+    <h:outputStylesheet library="css" name="main.css"/>
     <title>Регистрация в системе</title>
     <style type="text/css">
+        .row {
+            padding: 10px 0;
+        }
+        .panel-heading {
+            background-color: #337ab7 !important;
+            color: #ffffff !important;
+        }
     </style>
 </h:head>
-<h:body>
+<h:body style="background-color: #e7e7e7; height: 100%;">
     <h:form>
-        <h2>Hello World!</h2>
-        <h:inputText value="#{registrationController.name}" />
-        <p:panel title="Регистрация" collapsible="false">
-            <h:outputText value="Panel Content" />
-        </p:panel>
+        <div class="reg-panel" id="reg_panel" style="margin: 0 auto; width: 600px; padding-top: 50px">
+            <b:panel collapsible="false">
+                <f:facet name="heading">
+                    <h:outputText value="Регистрация" style="font-weight: bold"/>
+                    <i class="fa fa-user" style="float: right; font-size: 18px;"/>
+                </f:facet>
+
+                <f:event listener="#{registrationController.validatePassword}" type="postValidate" />
+
+                <b:panelGrid colSpans="3,9">
+                    <h:outputText id="login" value="Логин:"/>
+                    <h:inputText value="#{registrationController.user.username}" style="width: 100%"
+                                 required="true" requiredMessage="Пожалуйста введите логин"/>
+                    <h:outputText value="Пароль:"/>
+                    <h:inputSecret id="password" value="#{registrationController.user.password}" style="width: 100%"
+                                   required="true" requiredMessage="Пожалуйста введите пароль"/>
+                    <h:outputText value="Подтверждение пароля" />
+                    <h:inputSecret id="confirmPassword" required="true" style="width: 100%"
+                                   requiredMessage="Пожалуйста введите подтверждение пароль" />
+                </b:panelGrid>
+
+                <h:message for="password" style="color: red;" />
+                <h:message for="confirmPassword" style="color: red;" />
+
+                <b:panelGrid colSpans="3,9" style="padding-top: 30px">
+                    <h:outputText value="Фамилия:"/>
+                    <h:inputText value="#{registrationController.user.info.middleName}" style="width: 100%"/>
+                    <h:outputText value="Имя:"/>
+                    <h:inputText value="#{registrationController.user.info.name}" style="width: 100%"/>
+                    <h:outputText value="Отчество:"/>
+                    <h:inputText value="#{registrationController.user.info.lastName}" style="width: 100%"/>
+                    <h:outputText value="Должность:"/>
+                    <h:inputText value="#{registrationController.user.info.position}" style="width: 100%"/>
+                </b:panelGrid>
+
+                <div style="text-align: center; padding-top: 15px">
+                    <b:commandButton value="Создать профиль" update="buttons"  look="primary" style="width: 170px; margin-right: 50px; font-size: 16px"
+                    actionListener="#{registrationController.saveNewUser}"/>
+                    <b:commandButton value="Вернуться"  id="buttons" style="width: 170px; font-size: 16px"/>
+                </div>
+            </b:panel>
+        </div>
     </h:form>
 </h:body>
 </html>
