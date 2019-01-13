@@ -15,10 +15,11 @@
 </h:head>
 <h:body>
     <h:form>
-        Hello!
-        <div style="padding-top: 20px;">
-            <b:commandButton value="Выйти" style="width: 170px; font-size: 16px"
-                             action="logout"/>
+        <div class="main-panel">
+            Hello!
+            <div style="padding-top: 20px;">
+                <h:link value="Выйти" outcome="logout"/>
+            </div>
         </div>
     </h:form>
 </h:body>
