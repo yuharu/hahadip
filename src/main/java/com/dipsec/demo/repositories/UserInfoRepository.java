@@ -1,7 +1,7 @@
 package com.dipsec.demo.repositories;
 
-import com.dipsec.demo.model.entities.UserCredential;
+import com.dipsec.demo.model.entities.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<UserCredential, String> {
+public interface UserInfoRepository extends JpaRepository<UserInfo, String> {
 }

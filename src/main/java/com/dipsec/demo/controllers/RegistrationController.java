@@ -1,8 +1,7 @@
 package com.dipsec.demo.controllers;
 
 import com.dipsec.demo.model.entities.UserCredential;
-import com.dipsec.demo.model.entities.UserInfo;
-import com.dipsec.demo.repositories.UserRepository;
+import com.dipsec.demo.repositories.UserCredentialRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ import java.util.UUID;
 @Setter
 public class RegistrationController {
     @Autowired
-    private UserRepository userRepository;
+    private UserCredentialRepository userRepository;
 
     private UserCredential user;
 
