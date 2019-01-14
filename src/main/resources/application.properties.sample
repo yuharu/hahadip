@@ -8,7 +8,12 @@ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.show-sql=false
 spring.jpa.hibernate.ddl-auto=update
 
-# Spring security
-spring.security.user.name=user
-spring.security.user.password=123
+spring.liquibase.change-log=classpath:db/liquibase-changelog.xml
+
+# SSL
+server.port=8443
+server.ssl.key-alias=tomcat
+server.ssl.key-store-type=PKCS12
+server.ssl.key-store-password=q1w5erty
+server.ssl.key-store=classpath:keystore.p12
 
