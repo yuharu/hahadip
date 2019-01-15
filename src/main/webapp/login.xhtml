@@ -1,29 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-    <title>Login</title>
+    <h:outputStylesheet library="css" name="main.css"/>
+    <title>Вход в систему</title>
+    <style type="text/css">
+        .row {
+            padding: 10px 0;
+        }
+        .panel-heading {
+            background-color: #337ab7 !important;
+            color: #ffffff !important;
+        }
+    </style>
 </h:head>
 
-<h:body>
-    <h:form prependId="false">
+<h:body style="background-color: #e7e7e7; height: 100%;">
+    <h:form prependId="false" id="loginFormId" >
+        <div class="login_panel" id="login_panel" style="margin: 0 auto; width: 600px; padding-top: 50px">
+            <b:panel collapsible="false">
+                <f:facet name="heading">
+                    <h:outputText value="Вход в систему" style="font-weight: bold"/>
+                    <i class="fa fa-user" style="float: right; font-size: 18px;"/>
+                </f:facet>
+                <div style="text-align: center">
+                <p:outputLabel value="Ошибка аутентификации" styleClass="auth-failure"
+                               rendered="${!empty param['error']}"/>
+                </div>
 
-        <p:panelGrid columns="1" styleClass="ui-fluid center ui-noborder">
-            <h2>Please login</h2>
+                <b:panelGrid colSpans="3,9">
+                    <h:outputText value="Логин:"/>
+                    <h:inputText id="username" style="width: 100%"/>
+                    <h:outputText value="Пароль:"/>
+                    <h:inputSecret id="password" style="width: 100%"/>
+                </b:panelGrid>
 
-            <p:outputLabel value="Login failed!" styleClass="red"
-                           rendered="${!empty param['error']}" />
+                <div style="text-align: center; padding-top: 15px">
+                    <b:commandButton value="Вход" look="primary" style="width: 170px; margin-right: 50px; font-size: 16px"
+                              type="submit"
+                              ajax="false"/>
+                    <b:button value="Регистрация" style="width: 170px; font-size: 16px"
+                              outcome="registration"
+                              ajax="false"/>
+                </div>
 
-            <p:inputText id="username" placeholder="User name" />
-            <p:password id="password" placeholder="Password" />
-
-            <p:commandButton value="Login" ajax="false" />
-        </p:panelGrid>
-
+            </b:panel>
+        </div>
     </h:form>
 </h:body>
 </html>

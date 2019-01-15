@@ -1,3 +1,11 @@
 .main-panel {
     font-size: 16px;
 }
+.login-panel {
+    font-size: 16px !important;
+}
+
+.auth-failure {
+    color: darkred;
+    font-size: 16px !important;
+}
