@@ -4,7 +4,7 @@ import com.dipsec.demo.model.entities.Position;
 import com.dipsec.demo.model.entities.UserCredential;
 import com.dipsec.demo.model.entities.UserInfo;
 import com.dipsec.demo.repositories.PositionRepository;
-import com.dipsec.demo.repositories.UserCredentialRepository;
+import com.dipsec.demo.repositories.UserInfoRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +28,17 @@ import java.util.stream.Collectors;
 @Setter
 public class RegistrationController {
     @Autowired
-    private UserCredentialRepository userRepository;
+    private UserInfoRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private PositionRepository positionRepository;
 
-    private UserCredential user;
+    private UserInfo user;
 
     public void init(){
-        user = new UserCredential();
-        user.setInfo(new UserInfo());
+        user = new UserInfo();
+        user.setUserCredential(new UserCredential());
     }
 
     public String forwardToRegister() {
@@ -50,7 +50,7 @@ public class RegistrationController {
     }
 
     public String saveNewUser() {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.getUserCredential().setPassword(passwordEncoder.encode(user.getUserCredential().getPassword()));
         userRepository.save(user);
         return forwardToLogin();
     }

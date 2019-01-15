@@ -48,9 +48,9 @@
 
                 <b:panelGrid colSpans="3,9">
                     <h:outputText value="Логин:"/>
-                    <h:inputText id="login" value="#{registrationController.user.username}" style="width: 100%"/>
+                    <h:inputText id="login" value="#{registrationController.user.userCredential.username}" style="width: 100%"/>
                     <h:outputText value="Пароль:"/>
-                    <h:inputSecret id="password" value="#{registrationController.user.password}" style="width: 100%"
+                    <h:inputSecret id="password" value="#{registrationController.user.userCredential.password}" style="width: 100%"
                                    required="true" requiredMessage="Пожалуйста введите пароль"/>
                     <h:outputText value="Подтверждение пароля" />
                     <h:inputSecret id="confirmPassword" style="width: 100%"/>
@@ -63,15 +63,15 @@
 
                 <b:panelGrid colSpans="3,9" style="padding-top: 30px">
                     <h:outputText value="E-mail:"/>
-                    <h:inputText value="#{registrationController.user.info.email}" style="width: 100%"/>
+                    <h:inputText value="#{registrationController.user.email}" style="width: 100%"/>
                     <h:outputText value="Фамилия:"/>
-                    <h:inputText value="#{registrationController.user.info.middleName}" style="width: 100%"/>
+                    <h:inputText value="#{registrationController.user.middleName}" style="width: 100%"/>
                     <h:outputText value="Имя:"/>
-                    <h:inputText value="#{registrationController.user.info.name}" style="width: 100%"/>
+                    <h:inputText value="#{registrationController.user.name}" style="width: 100%"/>
                     <h:outputText value="Отчество:"/>
-                    <h:inputText value="#{registrationController.user.info.lastName}" style="width: 100%"/>
+                    <h:inputText value="#{registrationController.user.lastName}" style="width: 100%"/>
                     <h:outputText value="Должность:"/>
-                    <p:autoComplete value="#{registrationController.user.info.position}"
+                    <p:autoComplete value="#{registrationController.user.position}"
                                     completeMethod="#{registrationController.completePositions}" style="width: 100%"/>
                 </b:panelGrid>
 
