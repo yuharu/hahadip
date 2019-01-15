@@ -1,7 +1,9 @@
 package com.dipsec.demo.controllers;
 
+import com.dipsec.demo.model.entities.Position;
 import com.dipsec.demo.model.entities.UserCredential;
 import com.dipsec.demo.model.entities.UserInfo;
+import com.dipsec.demo.repositories.PositionRepository;
 import com.dipsec.demo.repositories.UserCredentialRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,8 +17,10 @@ import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Named;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Named(value = "registrationController")
 @SessionScope
@@ -27,6 +31,8 @@ public class RegistrationController {
     private UserCredentialRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PositionRepository positionRepository;
 
     private UserCredential user;
 
@@ -74,8 +80,8 @@ public class RegistrationController {
             return;
         }
 
-        if (password.length() < 8) {
-            showPasswordErrorMessage("Длина пароля должна быть не менее 8 символов", passwordId);
+        if (password.length() < 10) {
+            showPasswordErrorMessage("Длина пароля должна быть не менее 10 символов", passwordId);
             return;
         }
 
@@ -111,6 +117,11 @@ public class RegistrationController {
         if (!password.equals(confirmPassword)) {
             showPasswordErrorMessage("Пароли должны совпадать", passwordId);
         }
+    }
+
+    public List<String> completePositions(String query) {
+        List<Position> positions = positionRepository.findByNameLike(query);
+        return positions.stream().map(Position::getName).collect(Collectors.toList());
     }
 
     private void showPasswordErrorMessage(String message, String passwordId) {
