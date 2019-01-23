@@ -6,4 +6,6 @@
 
     <include file="changelog/01-insert-test-users.sql" relativeToChangelogFile="true"/>
     <include file="changelog/02-insert-test-positions.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/03-insert-user-roles.sql" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>
